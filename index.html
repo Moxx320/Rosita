@@ -2,32 +2,98 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Para ti</title>
+  <title>Rosa Amarilla para Ti</title>
   <style>
     body {
       background-color: #fff8dc;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      text-align: center;
-      padding: 50px;
     }
-    img {
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
+    .rose {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at center, #ffeb3b 40%, #fdd835 60%, #fbc02d 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      animation: bloom 2s ease-in-out forwards;
     }
-    h1 {
-      color: #d4af37;
+
+    .rose::before,
+    .rose::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle at center, #fdd835 40%, #fbc02d 60%, #f9a825 100%);
+      border-radius: 50%;
+    }
+
+    .rose::before {
+      top: -20px;
+      left: -20px;
+    }
+
+    .rose::after {
+      top: 20px;
+      left: 20px;
+    }
+
+    .stem {
+      width: 10px;
+      height: 120px;
+      background-color: #388e3c;
+      margin-top: -10px;
+      border-radius: 5px;
+    }
+
+    .leaf {
+      width: 30px;
+      height: 15px;
+      background-color: #4caf50;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .leaf.left {
+      left: -25px;
+      top: 30px;
+      transform: rotate(-45deg);
+    }
+
+    .leaf.right {
+      right: -25px;
+      top: 60px;
+      transform: rotate(45deg);
+    }
+
+    .message {
       margin-top: 20px;
+      font-size: 20px;
+      color: #d4af37;
+      text-align: center;
     }
-    p {
-      font-size: 18px;
-      color: #555;
+
+    @keyframes bloom {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Yellow_Rose_21.jpg/800px-Yellow_Rose_21.jpg" alt="Rosa Amarilla">
-  <h1>Para ti, mi amor</h1>
-  <p>Una rosa amarilla, como la luz que irradias en mi vida.</p>
+  <div class="rose">
+    <div class="leaf left"></div>
+    <div class="leaf right"></div>
+  </div>
+  <div class="stem"></div>
+  <div class="message">
+    Una rosa amarilla para ti, <br>porque iluminas mis días.
+  </div>
 </body>
 </html>
